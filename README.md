@@ -1,7 +1,5 @@
-Voici une proposition de documentation que tu peux utiliser comme base pour un dépôt GitHub (par ex. dans un `README.md`).  
-Je l’écris en français, orientée open source, avec une description du code des 3 fichiers.
-
----
+![Static Badge](https://img.shields.io/badge/MADE%20BY-CLAUDE%20OPUS%204.5-purple?style=for-the-badge)
+![Static Badge](https://img.shields.io/badge/MADE%20IN-FRANCE-blue?style=for-the-badge)
 
 # GigaFaith – Calendrier des Fêtes Chrétiennes & Saints du Jour
 
