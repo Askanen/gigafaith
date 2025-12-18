@@ -1,0 +1,896 @@
+/* ==========================================
+   GigaFaith - Thème Light/Dark
+   ========================================== */
+
+/* Variables CSS pour les thèmes */
+:root {
+    --transition-speed: 0.3s;
+}
+
+/* ==========================================
+   LIGHT THEME (défaut)
+   ========================================== */
+[data-theme="light"] {
+    --bg-primary: #f8fafc;
+    --bg-secondary: #ffffff;
+    --bg-tertiary: #f1f5f9;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --text-muted: #94a3b8;
+    --border-color: #e2e8f0;
+    --accent-primary: #f59e0b;
+    --accent-secondary: #3b82f6;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --header-bg: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    --panel-bg: #ffffff;
+    --day-bg: #f8fafc;
+    --day-hover: #e2e8f0;
+    --modal-bg: #ffffff;
+    --input-bg: #f8fafc;
+    --scrollbar-track: #f1f5f9;
+    --scrollbar-thumb: #cbd5e1;
+}
+
+[data-theme="light"] body {
+    background: linear-gradient(135deg, #fef9e7 0%, #fdf2f8 50%, #ede9fe 100%);
+}
+
+/* ==========================================
+   DARK THEME
+   ========================================== */
+[data-theme="dark"] {
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --bg-tertiary: #334155;
+    --text-primary: #f1f5f9;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+    --border-color: #475569;
+    --accent-primary: #f59e0b;
+    --accent-secondary: #60a5fa;
+    --shadow-color: rgba(0, 0, 0, 0.4);
+    --header-bg: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    --panel-bg: #1e293b;
+    --day-bg: #334155;
+    --day-hover: #475569;
+    --modal-bg: #1e293b;
+    --input-bg: #334155;
+    --scrollbar-track: #1e293b;
+    --scrollbar-thumb: #475569;
+}
+
+[data-theme="dark"] body {
+    background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #1e293b 100%);
+}
+
+/* ==========================================
+   HEADER
+   ========================================== */
+.header-bg {
+    background: var(--header-bg);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 2px 10px var(--shadow-color);
+}
+
+.header-title {
+    color: var(--text-primary);
+}
+
+.header-subtitle {
+    color: var(--text-secondary);
+}
+
+.theme-toggle {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    border: 2px solid var(--border-color);
+    cursor: pointer;
+}
+
+.theme-toggle:hover {
+    background: var(--accent-primary);
+    color: white;
+    border-color: var(--accent-primary);
+}
+
+/* ==========================================
+   PANELS
+   ========================================== */
+.panel {
+    background: var(--panel-bg);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 20px var(--shadow-color);
+}
+
+.panel-title {
+    color: var(--text-primary);
+}
+
+/* ==========================================
+   SAINT DU JOUR CARD
+   ========================================== */
+.saint-card {
+    background: linear-gradient(135deg, var(--accent-primary), #d97706);
+    color: white;
+}
+
+.saint-icon {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.saint-label {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.saint-name {
+    color: white;
+}
+
+/* ==========================================
+   NAVIGATION BUTTONS
+   ========================================== */
+.nav-btn {
+    background: var(--accent-primary);
+    color: white;
+    border: none;
+}
+
+.nav-btn:hover {
+    background: #d97706;
+}
+
+/* ==========================================
+   WEEKDAY LABELS
+   ========================================== */
+.weekday-label {
+    color: var(--text-secondary);
+}
+
+.weekday-sunday {
+    color: #ef4444;
+}
+
+/* ==========================================
+   LEGEND
+   ========================================== */
+.legend-text {
+    color: var(--text-secondary);
+}
+
+.legend-dot {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+}
+
+.legend-major {
+    background: #f59e0b;
+    box-shadow: 0 0 6px rgba(245, 158, 11, 0.5);
+}
+
+.legend-mobile {
+    background: #0ea5e9;
+    box-shadow: 0 0 6px rgba(14, 165, 233, 0.5);
+}
+
+.legend-fixed {
+    background: #10b981;
+    box-shadow: 0 0 6px rgba(16, 185, 129, 0.5);
+}
+
+.legend-today {
+    background: #f43f5e;
+    box-shadow: 0 0 6px rgba(244, 63, 94, 0.5);
+}
+
+.legend-saint {
+    background: #8b5cf6;
+    box-shadow: 0 0 6px rgba(139, 92, 246, 0.5);
+}
+
+/* ==========================================
+   INPUT FIELDS
+   ========================================== */
+.input-field {
+    background: var(--input-bg);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+.input-field::placeholder {
+    color: var(--text-muted);
+}
+
+.input-field:focus {
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
+}
+
+.search-btn {
+    background: var(--accent-primary);
+    color: white;
+}
+
+.search-btn:hover {
+    background: #d97706;
+}
+
+/* ==========================================
+   TAB BUTTONS
+   ========================================== */
+.tab-btn {
+    background: var(--bg-tertiary);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+}
+
+.tab-btn:hover {
+    background: var(--day-hover);
+}
+
+.tab-btn.active {
+    background: var(--accent-primary);
+    color: white;
+    border-color: var(--accent-primary);
+}
+
+/* ==========================================
+   EMPTY TEXT
+   ========================================== */
+.empty-text {
+    color: var(--text-muted);
+}
+
+/* ==========================================
+   MODAL
+   ========================================== */
+.modal-overlay {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+}
+
+.modal-content {
+    background: var(--modal-bg);
+    border: 1px solid var(--border-color);
+}
+
+.modal-title {
+    color: var(--accent-primary);
+}
+
+.modal-close {
+    color: var(--text-secondary);
+}
+
+.modal-close:hover {
+    color: #ef4444;
+}
+
+.modal-date {
+    color: var(--text-secondary);
+}
+
+.modal-description {
+    color: var(--text-primary);
+}
+
+.google-btn {
+    background: linear-gradient(135deg, #f59e0b 0%, #ea580c 100%);
+    color: white;
+}
+
+.google-btn:hover {
+    background: linear-gradient(135deg, #d97706 0%, #c2410c 100%);
+}
+
+/* ==========================================
+   CLOCK WIDGET
+   ========================================== */
+.clock-widget {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 10px var(--shadow-color);
+}
+
+/* ==========================================
+   CUSTOM SCROLLBAR
+   ========================================== */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+    border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-primary);
+}
+
+/* ==========================================
+   CALENDAR DAYS
+   ========================================== */
+.calendar-day {
+    transition: all var(--transition-speed) ease;
+    cursor: pointer;
+    position: relative;
+    min-height: 60px;
+    background: var(--day-bg);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+.calendar-day:hover {
+    transform: scale(1.05);
+    z-index: 10;
+    background: var(--day-hover);
+    box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+.calendar-day.empty {
+    background: transparent;
+    border-color: transparent;
+}
+
+.calendar-day.empty:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+/* Jours supprimés (octobre 1582) */
+.calendar-day.skipped-day {
+    background: repeating-linear-gradient(
+        45deg,
+        var(--day-bg),
+        var(--day-bg) 5px,
+        var(--bg-tertiary) 5px,
+        var(--bg-tertiary) 10px
+    ) !important;
+    border: 1px dashed var(--border-color) !important;
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.calendar-day.skipped-day:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+/* Holiday Types - Couleurs légères */
+.holiday-major {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(217, 119, 6, 0.15)) !important;
+    border: 2px solid #f59e0b !important;
+}
+
+[data-theme="dark"] .holiday-major {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.25), rgba(217, 119, 6, 0.25)) !important;
+}
+
+.holiday-mobile {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(14, 165, 233, 0.15)) !important;
+    border: 2px solid #0ea5e9 !important;
+}
+
+[data-theme="dark"] .holiday-mobile {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.25), rgba(14, 165, 233, 0.25)) !important;
+}
+
+.holiday-fixed {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(5, 150, 105, 0.15)) !important;
+    border: 2px solid #10b981 !important;
+}
+
+[data-theme="dark"] .holiday-fixed {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.25), rgba(5, 150, 105, 0.25)) !important;
+}
+
+.holiday-saint {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(124, 58, 237, 0.15)) !important;
+    border: 2px solid #8b5cf6 !important;
+}
+
+[data-theme="dark"] .holiday-saint {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.25), rgba(124, 58, 237, 0.25)) !important;
+}
+
+.today {
+    background: linear-gradient(135deg, rgba(244, 63, 94, 0.2), rgba(225, 29, 72, 0.2)) !important;
+    border: 2px solid #f43f5e !important;
+    box-shadow: 0 0 12px rgba(244, 63, 94, 0.4);
+    animation: pulse 2s infinite;
+}
+
+/* Holiday dot indicator */
+.calendar-day.has-holiday::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent-primary);
+}
+
+/* ==========================================
+   HOLIDAY LIST ITEMS
+   ========================================== */
+.holiday-item {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    transition: all var(--transition-speed) ease;
+}
+
+.holiday-item:hover {
+    transform: translateX(5px);
+    background: var(--day-hover);
+}
+
+.holiday-item-name {
+    color: var(--text-primary);
+}
+
+.holiday-item-date {
+    color: var(--text-secondary);
+}
+
+/* Holiday dot */
+.holiday-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+/* ==========================================
+   SAINTS LIST
+   ========================================== */
+.saint-item {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    transition: all var(--transition-speed) ease;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.saint-item:hover {
+    background: var(--day-hover);
+    transform: translateX(3px);
+}
+
+.saint-item-date {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+}
+
+.saint-item-name {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* ==========================================
+   CALENDAR INFO BOX
+   ========================================== */
+.calendar-info {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+    border: 1px solid #8b5cf6;
+}
+
+[data-theme="dark"] .calendar-info {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.2));
+}
+
+.calendar-info-title {
+    color: #7c3aed;
+}
+
+[data-theme="dark"] .calendar-info-title {
+    color: #a78bfa;
+}
+
+.calendar-info-text {
+    color: var(--text-secondary);
+}
+
+/* ==========================================
+   LEAP YEAR RESULTS
+   ========================================== */
+.leap-yes {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(5, 150, 105, 0.15));
+    border: 2px solid #10b981;
+}
+
+.leap-yes .leap-icon {
+    color: #10b981;
+}
+
+.leap-yes .leap-title {
+    color: #059669;
+}
+
+[data-theme="dark"] .leap-yes .leap-title {
+    color: #34d399;
+}
+
+.leap-yes .leap-subtitle {
+    color: var(--text-secondary);
+}
+
+.leap-no {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(220, 38, 38, 0.15));
+    border: 2px solid #ef4444;
+}
+
+.leap-no .leap-icon {
+    color: #ef4444;
+}
+
+.leap-no .leap-title {
+    color: #dc2626;
+}
+
+[data-theme="dark"] .leap-no .leap-title {
+    color: #f87171;
+}
+
+.leap-no .leap-subtitle {
+    color: var(--text-secondary);
+}
+
+/* ==========================================
+   ANIMATIONS
+   ========================================== */
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 0 12px rgba(244, 63, 94, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(244, 63, 94, 0.6);
+    }
+}
+
+@keyframes modalEnter {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.modal-enter {
+    animation: modalEnter 0.3s ease forwards;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+.leap-badge {
+    animation: bounce 1s infinite;
+}
+
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+@media (max-width: 768px) {
+    .calendar-day {
+        min-height: 50px;
+        font-size: 0.875rem;
+    }
+    
+    .calendar-day .day-name {
+        display: none;
+    }
+}
+
+/* ==========================================
+   TRANSITIONS GLOBALES
+   ========================================== */
+body,
+.panel,
+.calendar-day,
+.holiday-item,
+.modal-content,
+.input-field,
+.nav-btn,
+.tab-btn,
+.clock-widget {
+    transition: background-color var(--transition-speed) ease,
+                color var(--transition-speed) ease,
+                border-color var(--transition-speed) ease,
+                box-shadow var(--transition-speed) ease;
+}
+
+/* Leap year badges */
+.leap-badge {
+    animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+/* ==========================================
+   NOTIFICATION TOAST
+   ========================================== */
+.notification-toast {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-100px);
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    padding: 1rem 1.5rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 20px var(--shadow-color);
+    border: 1px solid var(--border-color);
+    z-index: 1000;
+    transition: transform 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.notification-toast.show {
+    transform: translateX(-50%) translateY(0);
+}
+
+.notification-toast i {
+    color: var(--accent-primary);
+}
+
+/* ==========================================
+   EASTER EGG ANIMATIONS
+   ========================================== */
+.easter-egg-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 9999;
+    overflow: hidden;
+}
+
+.easter-egg-particle {
+    position: absolute;
+    font-size: 30px;
+    animation-duration: 3s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+
+.easter-egg-particle.fall {
+    top: -50px;
+    animation-name: fallDown;
+}
+
+.easter-egg-particle.rise {
+    bottom: -50px;
+    animation-name: riseUp;
+}
+
+.easter-egg-particle.firework {
+    animation-name: fireworkBurst;
+    animation-duration: 2s;
+}
+
+@keyframes fallDown {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+@keyframes riseUp {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) scale(1.5);
+        opacity: 0;
+    }
+}
+
+@keyframes fireworkBurst {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    20% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--tx), var(--ty)) scale(0.3);
+        opacity: 0;
+    }
+}
+
+/* Message d'anniversaire */
+.easter-egg-message {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #f59e0b 0%, #ea580c 100%);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    animation: messagePopIn 0.5s ease forwards, messageFadeOut 0.5s ease 4s forwards;
+    z-index: 10000;
+}
+
+@keyframes messagePopIn {
+    0% {
+        transform: translateX(-50%) scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(-50%) scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes messageFadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+/* ==========================================
+   FOOTER / MENTIONS LÉGALES
+   ========================================== */
+.legal-footer {
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
+    color: var(--text-secondary);
+}
+
+.legal-link {
+    color: var(--accent-primary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.legal-link:hover {
+    color: var(--accent-secondary);
+    text-decoration: underline;
+}
+
+/* Disabled navigation button */
+.nav-btn:disabled,
+.nav-btn.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+.nav-btn:disabled:hover,
+.nav-btn.disabled:hover {
+    background: var(--accent-primary);
+    transform: none !important;
+}
+
+/* ==========================================
+   DONATE BUTTON
+   ========================================== */
+.donate-btn {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.donate-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(9, 21, 33, 0.08);
+}
+
+/* Small responsive hide for label if necessary */
+@media (max-width: 640px) {
+    .donate-btn span { display: none; }
+}
+
+/* Ensure donate modal uses same modal styles */
+#donateModal .modal-content { max-width: 680px; }
+#donateModal .modal-description { white-space: pre-wrap; }
+
+
+/* ==========================================
+   LANGUAGE SELECTOR
+   ========================================== */
+.language-selector {
+    position: relative;
+}
+
+.lang-toggle {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    border: 2px solid var(--border-color);
+    cursor: pointer;
+}
+
+.lang-toggle:hover {
+    background: var(--accent-primary);
+    color: white;
+    border-color: var(--accent-primary);
+}
+
+.lang-dropdown {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    min-width: 160px;
+}
+
+.lang-option {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    width: 100%;
+    text-align: left;
+    transition: all 0.2s ease;
+    color: var(--text-primary);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.lang-option:hover {
+    background: var(--day-hover);
+}
+
+.lang-option.active {
+    background: var(--accent-primary);
+    color: white;
+}
+
+.lang-dropdown.show {
+    display: block;
+    animation: dropdownFadeIn 0.2s ease;
+}
+
+@keyframes dropdownFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
