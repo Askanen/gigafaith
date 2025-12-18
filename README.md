@@ -570,13 +570,7 @@ Merci de :
 
 ## 📄 Licence
 
-À compléter selon ton choix (ex : MIT, GPL-3.0, etc.) :
-
 ```text
 MIT License
-Copyright (c) 2025 ...
+Copyright (c) 2025 - GIGAFAITH
 ```
-
----
-
-Si tu veux, je peux aussi te proposer une version plus courte du README ou ajouter une section “API interne” détaillant les principales fonctions (signatures + comportement) pour les contributeurs.
