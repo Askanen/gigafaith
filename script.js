@@ -691,6 +691,18 @@ function createDate(year, month, day) {
     return date;
 }
 
+// Obtenir le nombre de jours dans un mois donné
+function getDaysInMonth(year, month) {
+    // Utiliser le mois suivant, jour 0 = dernier jour du mois précédent
+    // On doit créer directement avec l'année correcte pour gérer les années bissextiles
+    const date = new Date(year, month + 1, 0);
+    // Pour les années 0-99, JavaScript les interprète comme 1900-1999, donc on corrige
+    if (year >= 0 && year < 100) {
+        date.setFullYear(year);
+    }
+    return date.getDate();
+}
+
 // ==========================================
 // Information sur le type de calendrier
 // ==========================================
@@ -1018,7 +1030,7 @@ function renderCalendar() {
     if (startDay < 0) startDay = 6;
     
     // Nombre de jours dans le mois
-    const daysInMonth = createDate(year, month + 1, 0).getDate();
+    const daysInMonth = getDaysInMonth(year, month);
     
     // Récupérer les fêtes pour l'année courante
     const holidays = getChristianHolidays(year);
