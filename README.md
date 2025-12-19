@@ -13,12 +13,14 @@ Cette section est destinée aux utilisateurs finaux de l'application.
 
 ### ✨ Fonctionnalités Principales
 
+*   **Calendrier Liturgique Complet :** Visualisez les fêtes chrétiennes (Pâques, Noël, Ascension) avec des indicateurs de couleurs selon leur importance et une histoire de l'origine de cette fête.
 *   **Calendrier Perpétuel Historique :**
     *   **Ère Julienne (-45 à 1582) :** Basé sur la réforme de Jules César.
     *   **Transition de 1582 :** Gestion précise de la réforme du Pape Grégoire XIII (suppression historique de 10 jours en octobre).
     *   **Ère Moderne :** Calendrier Grégorien actuel.
 *   **Fêtes Liturgiques :** Calcul automatique des fêtes mobiles (Pâques, Ascension, Pentecôte) et affichage des fêtes fixes (Noël, Assomption).
-*   **Les Saints :** Affichage quotidien du Saint à célébrer.
+*   **Intégration Google Calendar :** Possibilité de cliquer sur "Ajouter à Google Calendar" ouvrant l'application Google Calendar et pré-remplissant le jour à la date choisie.
+*   **Les Saints :** Affichage quotidien du Saint à célébrer avec description du saint ou de l'événement.
 *   **Internationalisation (i18n) :** Interface entièrement traduite en **Français, Anglais, Espagnol, Italien, Allemand et Coréen**.
 *   **Respect de la Vie Privée :** Aucune collecte de données (conforme RGPD), tout est stocké localement sur votre appareil.
 
