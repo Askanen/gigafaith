@@ -1,4 +1,3 @@
-```markdown
 # ✝️ GigaFaith - Calendrier Chrétien & Saints du Jour
 
 Une application web interactive dédiée au calendrier liturgique chrétien. Elle permet d'explorer les fêtes majeures, les saints du jour et de naviguer à travers l'histoire, depuis l'époque romaine jusqu'au futur lointain, en gérant les complexités des réformes calendaires (Julien vs Grégorien).
@@ -120,4 +119,3 @@ Modifiez l'objet `saintsOfTheYear` ou le tableau des fêtes dans `script.js`.
 **Contributions :** Les Pull Requests sont les bienvenues. Merci de respecter la structure existante et de tester la compatibilité 1582 (réforme grégorienne) lors modification des fonctions de date.
 
 *© 2025 GigaFaith - Développé avec foi et code.*
-```
