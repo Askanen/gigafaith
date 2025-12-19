@@ -3,7 +3,7 @@
 
 # ✝️ GigaFaith - Calendrier Chrétien & Saints du Jour
 
-**GigaFaith** est une application web interactive conçue pour explorer le calendrier liturgique chrétien à travers les âges. Elle gère avec précision les complexités historiques (calendriers Romain, Julien et Grégorien) et fournit les fêtes religieuses ainsi que les saints du jour.
+**GigaFaith** est une application web interactive conçue pour explorer le calendrier liturgique chrétien à travers les âges. Elle gère avec précision les complexités historiques (calendriers Julien et Grégorien) et fournit les fêtes religieuses ainsi que les saints du jour.
 
 ---
 
@@ -14,7 +14,6 @@ Cette section est destinée aux utilisateurs finaux de l'application.
 ### ✨ Fonctionnalités Principales
 
 *   **Calendrier Perpétuel Historique :**
-    *   **Antiquité (avant -45) :** Calendrier Romain.
     *   **Ère Julienne (-45 à 1582) :** Basé sur la réforme de Jules César.
     *   **Transition de 1582 :** Gestion précise de la réforme du Pape Grégoire XIII (suppression historique de 10 jours en octobre).
     *   **Ère Moderne :** Calendrier Grégorien actuel.
@@ -497,6 +496,25 @@ window.showSaintFromList = showSaintFromList;
 window.showDonateModal = showDonateModal;
 window.closeDonateModal = closeDonateModal;
 ```
+
+### ⚙️ Logique Métier (`script.js`)
+
+Le cœur de l'application repose sur plusieurs mécanismes clés :
+
+#### 1. Gestion du Temps et Calendriers
+Le script gère la complexité historique des dates :
+*   **Fonction `isDaySkipped(year, month, day)` :** Gère spécifiquement le mois d'octobre 1582 où les jours du 5 au 14 n'existent pas (passage Julien -> Grégorien).
+*   **Calcul de Pâques :** Algorithmes distincts pour le calcul de la date de Pâques selon le calendrier (Julien vs Grégorien).
+*   **Année 0 :** Gestion spéciale pour l'affichage de la Nativité.
+
+#### 2. Système d'Internationalisation (i18n)
+*   Chargement asynchrone des fichiers JSON via `fetch`.
+*   Variable `availableLanguages` : `['fr', 'en', 'es', 'it', 'de', 'ko']`.
+*   Fallback automatique sur des valeurs par défaut si le chargement JSON échoue.
+
+#### 3. Gestion de l'État et Stockage
+*   Utilisation de `localStorage` pour persister le choix du thème (`gigafaith-theme`).
+*   Aucun cookie de traçage tiers (conforme RGPD "Privacy by Design").
 
 ---
 
