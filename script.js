@@ -779,111 +779,111 @@ function getChristianHolidays(year) {
     const fixedHolidays = [
         {
             date: createDate(year, 0, 1),
-            name: "Sainte Marie, Mère de Dieu",
+            name: t('holidayMaryMotherOfGod'),
             type: "fixed",
-            description: "Premier jour de l'année, cette fête célèbre la maternité divine de Marie. Elle est la mère de Jésus-Christ, le Fils de Dieu fait homme. Cette solennité est aussi la Journée mondiale de la paix."
+            description: t('holidayMaryMotherOfGodDesc')
         },
         {
             date: createDate(year, 0, 6),
-            name: "Épiphanie",
+            name: t('holidayEpiphany'),
             type: "major",
-            description: "L'Épiphanie célèbre la manifestation de Jésus aux mages venus d'Orient. Ces sages, guidés par une étoile, apportèrent au Christ enfant l'or, l'encens et la myrrhe. Cette fête symbolise la révélation de Dieu à tous les peuples."
+            description: t('holidayEpiphanyDesc')
         },
         {
             date: createDate(year, 1, 2),
-            name: "Présentation de Jésus au Temple",
+            name: t('holidayPresentation'),
             type: "fixed",
-            description: "Quarante jours après Noël, cette fête commémore la présentation de Jésus au Temple de Jérusalem par Marie et Joseph, selon la loi juive. C'est aussi la fête de la Chandeleur."
+            description: t('holidayPresentationDesc')
         },
         {
             date: createDate(year, 2, 19),
-            name: "Saint Joseph",
+            name: t('holidaySaintJoseph'),
             type: "fixed",
-            description: "Fête de saint Joseph, époux de la Vierge Marie et père nourricier de Jésus. Il est le patron des travailleurs, des pères de famille et de l'Église universelle."
+            description: t('holidaySaintJosephDesc')
         },
         {
             date: createDate(year, 2, 25),
-            name: "Annonciation",
+            name: t('holidayAnnunciation'),
             type: "major",
-            description: "L'Annonciation célèbre l'annonce faite à Marie par l'archange Gabriel qu'elle deviendrait la mère du Fils de Dieu. Marie a répondu « Oui » à Dieu, permettant l'Incarnation."
+            description: t('holidayAnnunciationDesc')
         },
         {
             date: createDate(year, 5, 24),
-            name: "Nativité de Saint Jean-Baptiste",
+            name: t('holidayJohnBaptistBirth'),
             type: "fixed",
-            description: "Cette fête célèbre la naissance de Jean-Baptiste, le précurseur du Christ. Il est celui qui a préparé le chemin du Seigneur et baptisé Jésus dans le Jourdain."
+            description: t('holidayJohnBaptistBirthDesc')
         },
         {
             date: createDate(year, 5, 29),
-            name: "Saints Pierre et Paul",
+            name: t('holidayPeterPaul'),
             type: "major",
-            description: "Solennité célébrant les deux piliers de l'Église : Pierre, le chef des apôtres à qui Jésus a confié les clés du Royaume, et Paul, l'apôtre des nations qui a évangélisé le monde païen."
+            description: t('holidayPeterPaulDesc')
         },
         {
             date: createDate(year, 7, 6),
-            name: "Transfiguration",
+            name: t('holidayTransfiguration'),
             type: "fixed",
-            description: "La Transfiguration commémore le moment où Jésus, sur le mont Thabor, s'est montré dans sa gloire divine à Pierre, Jacques et Jean. Son visage resplendit comme le soleil."
+            description: t('holidayTransfigurationDesc')
         },
         {
             date: createDate(year, 7, 15),
-            name: "Assomption",
+            name: t('holidayAssumption'),
             type: "major",
-            description: "L'Assomption célèbre la montée de la Vierge Marie au ciel avec son âme et son corps à la fin de sa vie terrestre. Elle est la première des rachetés à entrer dans la gloire céleste."
+            description: t('holidayAssumptionDesc')
         },
         {
             date: createDate(year, 8, 8),
-            name: "Nativité de la Vierge Marie",
+            name: t('holidayMaryBirth'),
             type: "fixed",
-            description: "Cette fête célèbre la naissance de Marie, celle qui deviendra la mère de Jésus. Elle est née sans péché originel, préparée par Dieu pour être la mère du Sauveur."
+            description: t('holidayMaryBirthDesc')
         },
         {
             date: createDate(year, 8, 14),
-            name: "La Croix Glorieuse",
+            name: t('holidayHolyCross'),
             type: "fixed",
-            description: "Cette fête exalte la Sainte Croix, instrument de notre salut. Elle commémore la découverte de la vraie Croix par sainte Hélène et la victoire du Christ sur la mort."
+            description: t('holidayHolyCrossDesc')
         },
         {
             date: createDate(year, 10, 1),
-            name: "Toussaint",
+            name: t('holidayAllSaints'),
             type: "major",
-            description: "La Toussaint est la fête de tous les saints, connus et inconnus, qui sont au paradis. Elle nous rappelle que nous sommes tous appelés à la sainteté et à la vie éternelle avec Dieu."
+            description: t('holidayAllSaintsDesc')
         },
         {
             date: createDate(year, 10, 2),
-            name: "Commémoration des fidèles défunts",
+            name: t('holidayAllSouls'),
             type: "fixed",
-            description: "Le lendemain de la Toussaint, l'Église prie pour tous les fidèles défunts qui sont au purgatoire, afin qu'ils soient purifiés et puissent entrer dans la joie du Ciel."
+            description: t('holidayAllSoulsDesc')
         },
         {
             date: createDate(year, 11, 8),
-            name: "Immaculée Conception",
+            name: t('holidayImmaculateConception'),
             type: "major",
-            description: "Cette solennité célèbre la conception de Marie sans péché originel. Dès le premier instant de son existence, Marie a été préservée du péché en vue de devenir la mère du Sauveur."
+            description: t('holidayImmaculateConceptionDesc')
         },
         {
             date: createDate(year, 11, 25),
-            name: "Noël - Nativité du Seigneur",
+            name: t('holidayChristmas'),
             type: "major",
-            description: "Noël célèbre la naissance de Jésus-Christ à Bethléem. Le Fils de Dieu s'est fait homme pour nous sauver. C'est la fête de l'amour de Dieu qui vient habiter parmi nous."
+            description: t('holidayChristmasDesc')
         },
         {
             date: createDate(year, 11, 26),
-            name: "Saint Étienne",
+            name: t('holidaySaintStephen'),
             type: "fixed",
-            description: "Fête du premier martyr chrétien. Étienne, diacre rempli de l'Esprit Saint, a été lapidé pour sa foi en Jésus-Christ. Il a pardonné à ses bourreaux comme le Christ sur la croix."
+            description: t('holidaySaintStephenDesc')
         },
         {
             date: createDate(year, 11, 27),
-            name: "Saint Jean l'Évangéliste",
+            name: t('holidaySaintJohn'),
             type: "fixed",
-            description: "Fête de l'apôtre Jean, le disciple que Jésus aimait. Il est l'auteur du quatrième Évangile, de trois épîtres et de l'Apocalypse. Il est le seul apôtre mort de vieillesse."
+            description: t('holidaySaintJohnDesc')
         },
         {
             date: createDate(year, 11, 28),
-            name: "Saints Innocents",
+            name: t('holidayHolyInnocents'),
             type: "fixed",
-            description: "Cette fête commémore les enfants de Bethléem massacrés sur ordre du roi Hérode, qui cherchait à tuer l'enfant Jésus. Ils sont considérés comme les premiers martyrs."
+            description: t('holidayHolyInnocentsDesc')
         }
     ];
     
@@ -891,87 +891,87 @@ function getChristianHolidays(year) {
     const mobileHolidays = [
         {
             date: addDays(easter, -46),
-            name: "Mercredi des Cendres",
+            name: t('holidayAshWednesday'),
             type: "mobile",
-            description: "Début du Carême, période de 40 jours de préparation à Pâques. Les cendres, imposées sur le front, rappellent notre condition mortelle et nous invitent à la conversion."
+            description: t('holidayAshWednesdayDesc')
         },
         {
             date: addDays(easter, -7),
-            name: "Dimanche des Rameaux",
+            name: t('holidayPalmSunday'),
             type: "mobile",
-            description: "Ce dimanche ouvre la Semaine Sainte et commémore l'entrée triomphale de Jésus à Jérusalem. Le peuple l'acclamait avec des branches de palmier en criant « Hosanna ! »"
+            description: t('holidayPalmSundayDesc')
         },
         {
             date: addDays(easter, -3),
-            name: "Jeudi Saint",
+            name: t('holidayHolyThursday'),
             type: "mobile",
-            description: "Le Jeudi Saint commémore le dernier repas de Jésus avec ses apôtres, lors duquel il institua l'Eucharistie et le sacerdoce. Il lava aussi les pieds de ses disciples."
+            description: t('holidayHolyThursdayDesc')
         },
         {
             date: addDays(easter, -2),
-            name: "Vendredi Saint",
+            name: t('holidayGoodFriday'),
             type: "major",
-            description: "Le Vendredi Saint est le jour de la crucifixion et de la mort de Jésus sur la croix. C'est un jour de jeûne et de recueillement où l'Église vénère la Croix du Sauveur."
+            description: t('holidayGoodFridayDesc')
         },
         {
             date: addDays(easter, -1),
-            name: "Samedi Saint",
+            name: t('holidayHolySaturday'),
             type: "mobile",
-            description: "Jour de silence et d'attente entre la mort et la résurrection du Christ. L'Église veille près du tombeau. La Vigile pascale, dans la nuit, célèbre la Résurrection."
+            description: t('holidayHolySaturdayDesc')
         },
         {
             date: easter,
-            name: "Pâques - Résurrection du Seigneur",
+            name: t('holidayEaster'),
             type: "major",
-            description: "Pâques est la plus grande fête chrétienne. Elle célèbre la résurrection de Jésus-Christ, vainqueur de la mort. C'est le fondement de notre foi et l'espérance de la vie éternelle."
+            description: t('holidayEasterDesc')
         },
         {
             date: addDays(easter, 1),
-            name: "Lundi de Pâques",
+            name: t('holidayEasterMonday'),
             type: "mobile",
-            description: "Le lundi de Pâques prolonge la joie pascale. L'Évangile raconte la rencontre des disciples d'Emmaüs avec Jésus ressuscité, qu'ils ont reconnu à la fraction du pain."
+            description: t('holidayEasterMondayDesc')
         },
         {
             date: addDays(easter, 7),
-            name: "Dimanche de la Divine Miséricorde",
+            name: t('holidayDivineMercy'),
             type: "mobile",
-            description: "Institué par saint Jean-Paul II, ce dimanche célèbre la miséricorde infinie de Dieu. Jésus a confié ce message à sainte Faustine : « Jésus, j'ai confiance en Toi. »"
+            description: t('holidayDivineMercyDesc')
         },
         {
             date: addDays(easter, 39),
-            name: "Ascension",
+            name: t('holidayAscension'),
             type: "major",
-            description: "L'Ascension célèbre la montée de Jésus au Ciel, quarante jours après Pâques. Le Christ ressuscité rejoint son Père et nous ouvre le chemin de la vie éternelle."
+            description: t('holidayAscensionDesc')
         },
         {
             date: addDays(easter, 49),
-            name: "Pentecôte",
+            name: t('holidayPentecost'),
             type: "major",
-            description: "La Pentecôte célèbre la descente de l'Esprit Saint sur les apôtres, cinquante jours après Pâques. C'est la naissance de l'Église. Les apôtres reçoivent la force d'annoncer l'Évangile."
+            description: t('holidayPentecostDesc')
         },
         {
             date: addDays(easter, 50),
-            name: "Lundi de Pentecôte",
+            name: t('holidayPentecostMonday'),
             type: "mobile",
-            description: "Le lundi de Pentecôte prolonge la fête de la Pentecôte et célèbre les dons de l'Esprit Saint répandus sur l'Église et sur chaque baptisé."
+            description: t('holidayPentecostMondayDesc')
         },
         {
             date: addDays(easter, 56),
-            name: "Sainte Trinité",
+            name: t('holidayTrinity'),
             type: "major",
-            description: "La fête de la Sainte Trinité célèbre le mystère central de la foi chrétienne : un seul Dieu en trois personnes égales et distinctes - le Père, le Fils et le Saint-Esprit."
+            description: t('holidayTrinityDesc')
         },
         {
             date: addDays(easter, 60),
-            name: "Fête-Dieu (Saint-Sacrement)",
+            name: t('holidayCorpusChristi'),
             type: "major",
-            description: "La Fête-Dieu célèbre la présence réelle de Jésus-Christ dans l'Eucharistie. Des processions solennelles portent l'hostie consacrée pour manifester la foi en ce mystère d'amour."
+            description: t('holidayCorpusChristiDesc')
         },
         {
             date: addDays(easter, 68),
-            name: "Sacré-Cœur de Jésus",
+            name: t('holidaySacredHeart'),
             type: "major",
-            description: "Cette fête célèbre l'amour infini du Christ pour l'humanité, symbolisé par son Cœur. Jésus a révélé son Cœur à sainte Marguerite-Marie : « Voici ce Cœur qui a tant aimé les hommes. »"
+            description: t('holidaySacredHeartDesc')
         }
     ];
     
@@ -986,17 +986,17 @@ function getChristianHolidays(year) {
     
     mobileHolidays.push({
         date: christTheKing,
-        name: "Christ Roi de l'Univers",
+        name: t('holidayChristKing'),
         type: "major",
-        description: "Dernière fête de l'année liturgique, elle proclame la royauté universelle du Christ sur toute la création. Son règne est un règne d'amour, de justice et de paix."
+        description: t('holidayChristKingDesc')
     });
     
     // Premier dimanche de l'Avent
     mobileHolidays.push({
         date: firstSundayAdvent,
-        name: "Premier dimanche de l'Avent",
+        name: t('holidayAdvent'),
         type: "mobile",
-        description: "Début de l'année liturgique et du temps de l'Avent, période de quatre semaines de préparation à Noël. L'Église attend la venue du Sauveur avec espérance."
+        description: t('holidayAdventDesc')
     });
     
     // Combiner toutes les fêtes
