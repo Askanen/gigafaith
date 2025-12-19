@@ -36,6 +36,28 @@ Cette section est destinée aux utilisateurs finaux de l'application.
 
 ## 🛠️ Partie 2 : Guide Technicien
 
+Cette section est destinée aux développeurs souhaitant comprendre l'architecture, contribuer ou modifier le projet.
+
+### 🏗️ Architecture Technique
+
+*   **Frontend :** HTML5, CSS3, JavaScript (Vanilla ES6+).
+*   **Styling :** [Tailwind CSS](https://tailwindcss.com/) (chargé via CDN) + `style.css` pour les animations personnalisées et les surcharges.
+*   **Icônes :** FontAwesome (via CDN).
+*   **Données :** Fichiers JSON pour les traductions (`fr.json`, `ko.json`, etc.).
+
+### 📂 Structure des Fichiers
+
+```text
+/
+├── index.html       # Structure DOM principale et templates
+├── script.js        # Logique métier, calculs de date, gestion i18n
+├── style.css        # Styles spécifiques (animations, modales, Easter eggs)
+├── fr.json          # Fichier de traduction (Français)
+├── en.json          # Fichier de traduction (Anglais)
+├── ...              # Autres langues
+└── README.md        # Documentation
+```
+
 ### 1. `index.html`
 
 Fichier principal contenant la structure de la page.
