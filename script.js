@@ -74,7 +74,8 @@ const defaultTranslations = {
         descGregorian: "En {year}, le calendrier Grégorien est en vigueur.",
         easterGregorian: "Pâques (Grégorien)",
         easterJulian: "Pâques (Julien)",
-        easterDaysDiff: "+{days} jours"
+        easterDaysDiff: "+{days} jours",
+        noHolidaysBeforeYear0: "Pas de fêtes chrétiennes avant la naissance du Christ (25 décembre an 0)"
     }
 };
 
@@ -759,6 +760,11 @@ function isDaySkipped(year, month, day) {
 // Calcul de toutes les fêtes chrétiennes
 // ==========================================
 function getChristianHolidays(year) {
+    // Pas de fêtes chrétiennes avant l'an 0 (avant Jésus-Christ)
+    if (year < 0) {
+        return [];
+    }
+    
     const easter = calculateEaster(year);
     const holidays = [];
     
@@ -998,6 +1004,12 @@ function getChristianHolidays(year) {
     
     // Trier par date
     holidays.sort((a, b) => a.date - b.date);
+    
+    // Pour l'an 0, ne garder que les fêtes à partir de Noël (25 décembre)
+    // Car Jésus est né le 25 décembre de l'an 0
+    if (year === 0) {
+        return holidays.filter(h => h.date.getMonth() === 11 && h.date.getDate() >= 25);
+    }
     
     return holidays;
 }
@@ -1358,6 +1370,12 @@ function displayCalendarInfo(year) {
 function displayHolidaysList(year) {
     const container = document.getElementById('holidaysList');
     const holidays = getChristianHolidays(year);
+    
+    // Message si pas de fêtes (avant l'an 0)
+    if (holidays.length === 0) {
+        container.innerHTML = `<p class="empty-text text-center">${t('noHolidaysBeforeYear0')}</p>`;
+        return;
+    }
     
     container.innerHTML = holidays.map(holiday => {
         const options = { day: 'numeric', month: 'short' };

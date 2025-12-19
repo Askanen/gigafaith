@@ -65,6 +65,8 @@
     "easterJulian": "Ostern (Julianisch)",
     "easterDaysDiff": "+{days} Tage",
     
+    "noHolidaysBeforeYear0": "Keine christlichen Feste vor der Geburt Christi (25. Dezember Jahr 0)",
+    
     "legalAndGdpr": "Impressum & DSGVO",
     "legalTitle": "Impressum & DSGVO",
     "legalSection1Title": "1. Herausgeber der Website",

@@ -65,6 +65,8 @@
     "easterJulian": "Pascua (Juliano)",
     "easterDaysDiff": "+{days} días",
     
+    "noHolidaysBeforeYear0": "No hay fiestas cristianas antes del nacimiento de Cristo (25 de diciembre del año 0)",
+    
     "legalAndGdpr": "Aviso legal y RGPD",
     "legalTitle": "Aviso Legal y RGPD",
     "legalSection1Title": "1. Editor del sitio",

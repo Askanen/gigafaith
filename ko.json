@@ -65,6 +65,8 @@
     "easterJulian": "부활절 (율리우스력)",
     "easterDaysDiff": "+{days}일",
     
+    "noHolidaysBeforeYear0": "그리스도 탄생 이전에는 그리스도교 축일이 없습니다 (기원 0년 12월 25일)",
+    
     "legalAndGdpr": "법적 고지 및 GDPR",
     "legalTitle": "법적 고지 및 GDPR",
     "legalSection1Title": "1. 웹사이트 발행인",

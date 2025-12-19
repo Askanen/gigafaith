@@ -65,6 +65,8 @@
     "easterJulian": "Easter (Julian)",
     "easterDaysDiff": "+{days} days",
     
+    "noHolidaysBeforeYear0": "No Christian holidays before the birth of Christ (December 25, year 0)",
+    
     "legalAndGdpr": "Legal Notice & GDPR",
     "legalTitle": "Legal Notice & GDPR",
     "legalSection1Title": "1. Website Publisher",

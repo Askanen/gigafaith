@@ -65,6 +65,8 @@
     "easterJulian": "Pâques (Julien)",
     "easterDaysDiff": "+{days} jours",
     
+    "noHolidaysBeforeYear0": "Pas de fêtes chrétiennes avant la naissance du Christ (25 décembre an 0)",
+    
     "legalAndGdpr": "Mentions légales & RGPD",
     "legalTitle": "Mentions Légales & RGPD",
     "legalSection1Title": "1. Éditeur du site",
