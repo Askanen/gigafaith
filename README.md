@@ -1,3 +1,6 @@
+![Static Badge](https://img.shields.io/badge/MADE%20BY-CLAUDE%20OPUS%204.5-purple?style=for-the-badge)
+![Static Badge](https://img.shields.io/badge/MADE%20IN-FRANCE-blue?style=for-the-badge)
+
 # ✝️ GigaFaith - Calendrier Chrétien & Saints du Jour
 
 **GigaFaith** est une application web interactive conçue pour explorer le calendrier liturgique chrétien à travers les âges. Elle gère avec précision les complexités historiques (calendriers Romain, Julien et Grégorien) et fournit les fêtes religieuses ainsi que les saints du jour.
@@ -31,137 +34,531 @@ Cette section est destinée aux utilisateurs finaux de l'application.
 
 ---
 
-## 🛠️ Partie 2 : Documentation Technique
+## 🛠️ Partie 2 : Guide Technicien
 
-Cette section détaille l'architecture du code pour les développeurs souhaitant maintenir ou faire évoluer le projet.
+### 1. `index.html`
 
-### 🏗️ Architecture Technique
+Fichier principal contenant la structure de la page.
 
-Le projet est conçu en **Vanilla JavaScript** (ES6+), sans framework lourd (pas de React/Vue), pour assurer légèreté et performance.
+Éléments clés :
 
-*   **Stack :** HTML5, CSS3, JavaScript.
-*   **Framework CSS :** [Tailwind CSS](https://tailwindcss.com/) (via CDN) pour le layout et le design system.
-*   **Styles Custom :** `style.css` pour les animations spécifiques (modales, particules, easter eggs).
-*   **Données :** Fichiers JSON externes pour les traductions.
+- **En-tête (header)**
+  - Titre et sous-titre :
+    ```html
+    <p class="header-subtitle mt-2" data-i18n="subtitle">
+      Calendrier des Fêtes Chrétiennes & Saints du Jour
+    </p>
+    ```
+  - Bouton de don :
+    ```html
+    <button class="donate-btn ed-full transition-all hover:scale-105 flex items-center gap-2" onclick="showDonateModal()">
+        <i class="fas fa-hand-holding-heart text-lg"></i>
+        <span class="hidden sm:inline" data-i18n="donateBtn">Faire un don</span>
+    </button>
+    ```
+  - Sélecteur de langue (bouton + dropdown, contrôlé par `script.js`)
 
-### 📂 Structure des fichiers
+- **Panneau droit – Recherche d’année**
+  - Champ numérique :
+    ```html
+    <input type="number" id="yearInput"
+           class="input-field ..."
+           data-i18n-placeholder="yearPlaceholder"
+           placeholder="Année (-46 à 9999)" min="-46" max="9999">
+    ```
+  - Bouton de recherche : `#searchBtn`
+  - Zone de résultat :
+    - `#leapYearResult` : information sur le caractère bissextile de l’année
+    - `#calendarInfo` : info calendrier Julien / Grégorien / transition
 
-```text
-/
-├── index.html       # Point d'entrée, contient la structure DOM et les templates
-├── script.js        # Cœur du réacteur : logique métier, date, i18n
-├── style.css        # Surcharges CSS, animations (keyframes), variables thématiques
-├── fr.json          # Fichier de langue (Français)
-├── ...              # Autres fichiers de langue (en, es, it, de, ko)
-└── README.md        # Documentation
-```
+- **Modal des fêtes (`#holidayModal`)**
+  Affiche le détail d’une fête lorsqu’on clique sur un jour ou une entrée de liste :
+  - `#modalTitle` – titre de la fête
+  - `#modalDate` – date formatée
+  - `#modalDescription` – description en texte riche
+  - Bouton "Ajouter à Google Calendar" (`#addToGoogleCalendar`)
 
-### 🧠 Analyse Détaillée du Code (`script.js`)
+- **Horloge**  
+  Widget fixe en bas à droite :
+  ```html
+  <div class="fixed bottom-4 right-4 clock-widget rounded-xl px-4 py-2">
+      <span id="liveTime" class="font-mono text-lg"></span>
+  </div>
+  ```
 
-Le fichier JavaScript gère toute l'interactivité. Voici les blocs logiques clés :
+- **Footer / Mentions légales**
+  - Texte avec attribution :
+    ```html
+    © 2025 GigaFaith - Calendrier Chrétien
+    ```
+  - Lien pour ouvrir la modal de mentions légales :
+    ```html
+    <span class="legal-link" onclick="showLegalNotice()">Mentions légales & RGPD</span>
+    ```
 
-#### 1. Gestion de l'État Global
-L'application maintient un état simple pour éviter la complexité de gestionnaires d'états externes :
-```javascript
-let currentDate = new Date();       // Date actuelle réelle
-let selectedYear = currentDate.getFullYear(); // Année visualisée
-let currentHolidays = [];           // Cache des fêtes de l'année en cours
-let currentTheme = 'light';         // Thème de l'interface
-```
+- **Modals supplémentaires (non montrés en entier dans l’extrait)**
+  - `#donateModal` – pour les dons
+  - `#legalModal` – pour les mentions légales (généré dynamiquement par JS)
 
-#### 2. Système d'Internationalisation (i18n)
-Le système est **asynchrone** et résilient.
-*   **Chargement :** La fonction `loadTranslationFile(lang)` utilise `fetch` pour récupérer le JSON correspondant.
-*   **Fallback :** Si le fichier JSON échoue (ex: erreur réseau), le script bascule sur l'objet `defaultTranslations` codé en dur dans le JS.
-*   **Application :** La fonction parcourt le DOM pour trouver les attributs `data-i18n` et injecte le texte traduit.
+- **Script principal**
+  ```html
+  <script src="script.js"></script>
+  ```
 
-```javascript
-// Exemple de logique simplifiée
-async function changeLanguage(lang) {
-    await loadTranslationFile(lang);
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        el.innerText = translations[key];
-    });
+---
+
+### 2. `style.css`
+
+Feuille de style principale, basée sur des variables CSS (`--bg-primary`, `--text-primary`, etc.) et compatible avec un thème clair/sombre.
+
+Sections importantes :
+
+#### Transitions globales
+
+```css
+body,
+.panel,
+.calendar-day,
+.holiday-item,
+.modal-content,
+.input-field,
+.nav-btn,
+.tab-btn,
+.clock-widget {
+    transition: background-color var(--transition-speed) ease,
+                color var(--transition-speed) ease,
+                border-color var(--transition-speed) ease,
+                box-shadow var(--transition-speed) ease;
 }
 ```
 
-#### 3. Algorithmique Calendaire (La particularité du projet)
-Le projet se distingue par sa gestion des ruptures historiques.
+#### Badge année bissextile
 
-*   **Le saut de 1582 :** Une fonction dédiée vérifie si un jour doit être "sauté" lors du passage au calendrier grégorien.
-    ```javascript
-    function isDaySkipped(year, month, day) {
-        // En octobre 1582, le lendemain du 4 octobre était le 15 octobre.
-        if (year === 1582 && month === 9 && day >= 5 && day <= 14) {
-             return true; // Ce jour n'existe pas historiquement
+```css
+.leap-badge {
+    animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+```
+
+#### Notification toast
+
+```css
+.notification-toast {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-100px);
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    ...
+}
+
+.notification-toast.show {
+    transform: translateX(-50%) translateY(0);
+}
+```
+
+#### Boutons de navigation & états désactivés
+
+Styles pour `.nav-btn`, `.nav-btn:disabled`, etc., avec gestion du `hover` désactivé lorsque le bouton est inactif.
+
+#### Bouton de don
+
+```css
+.donate-btn {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.donate-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(9, 21, 33, 0.08);
+}
+```
+
+Responsive : sur petit écran, on masque le texte du bouton pour ne garder que l’icône.
+
+#### Sélecteur de langue
+
+```css
+.language-selector { position: relative; }
+
+.lang-toggle {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    border: 2px solid var(--border-color);
+    cursor: pointer;
+}
+
+.lang-dropdown {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    min-width: 160px;
+}
+```
+
+---
+
+### 3. `script.js`
+
+Fichier JavaScript qui contient toute la logique métier et l’interactivité.
+
+#### État global
+
+```js
+let currentDate = new Date();
+let selectedYear = currentDate.getFullYear();
+let currentHolidays = [];
+let selectedHoliday = null;
+let currentTheme = 'light';
+let currentTab = 'holidays';
+let currentLang = 'fr';
+```
+
+---
+
+#### Internationalisation (i18n)
+
+- `translations` : objet contenant les dictionnaires de traductions.
+- `availableLanguages` : `['fr', 'en', 'es', 'it', 'de', 'ko']`.
+
+**Chargement des fichiers de traduction :**
+
+```js
+async function loadTranslationFile(lang) {
+    try {
+        const response = await fetch(`${lang}.json`);
+        if (!response.ok) throw new Error(...);
+        translations[lang] = await response.json();
+        return true;
+    } catch (error) {
+        console.warn(`Utilisation des traductions par défaut pour ${lang}`);
+        if (defaultTranslations[lang]) {
+            translations[lang] = defaultTranslations[lang];
         }
         return false;
     }
-    ```
-*   **Calcul de Pâques :** Le script contient l'algorithme de calcul de la date de Pâques (Comput), essentiel car il détermine les autres fêtes mobiles (Ascension, Pentecôte).
-
-#### 4. Rendu du Calendrier (`renderCalendar`)
-Cette fonction est appelée à chaque changement de mois ou d'année :
-1.  Vide la grille existante.
-2.  Calcule le premier jour du mois et le nombre de jours.
-3.  Boucle pour créer les éléments `<div>` des jours.
-4.  Applique les classes CSS selon les événements (fêtes, aujourd'hui, jour sélectionné).
-5.  Gère l'affichage des tooltips (saints du jour).
-
-#### 5. Gestion des Thèmes & Stockage
-Le thème est géré via des variables CSS et des classes sur la racine `<html>`. La persistance utilise le `LocalStorage` du navigateur.
-
-```javascript
-// Dans script.js
-function toggleTheme() {
-    // Bascule et sauvegarde
-    localStorage.setItem('gigafaith-theme', currentTheme);
-    // Met à jour l'attribut data-theme pour le CSS
-    document.documentElement.setAttribute('data-theme', currentTheme);
 }
 ```
 
-### 🎨 Styles et Animations (`style.css`)
+**Chargement global au démarrage :**
 
-Le fichier CSS complète Tailwind pour des besoins spécifiques :
-*   **Animations :** Les keyframes `@keyframes messagePopIn` gèrent l'apparition des messages (Easter Eggs).
-*   **Modales :** Classes utilitaires pour le centrage et le backdrop des mentions légales.
-*   **Variables CSS :** Utilisation de `--bg-secondary`, `--text-primary` pour faciliter le basculement Dark/Light mode de manière fluide.
+```js
+async function loadAllTranslations() {
+    const promises = availableLanguages.map(lang => loadTranslationFile(lang));
+    await Promise.all(promises);
+}
+```
 
-### 💻 Installation et Développement
+**Fonction utilitaire :**
 
-Pour tester le projet localement, il est nécessaire d'utiliser un petit serveur web car les navigateurs bloquent souvent le chargement de fichiers JSON locaux (CORS Policy).
+```js
+function t(key) {
+    if (translations[currentLang] && translations[currentLang][key] !== undefined) {
+        return translations[currentLang][key];
+    }
+    if (translations['fr'] && translations['fr'][key] !== undefined) {
+        return translations['fr'][key];
+    }
+    return key;
+}
+```
 
-1.  **Cloner le projet :**
-    ```bash
-    git clone https://github.com/votre-user/gigafaith.git
-    cd gigafaith
-    ```
-
-2.  **Lancer un serveur local :**
-    *   Avec Node.js (npx) :
-        ```bash
-        npx serve .
-        ```
-    *   Ou avec Python :
-        ```bash
-        python3 -m http.server
-        ```
-
-3.  **Accéder :** Ouvrez `http://localhost:3000` (ou le port indiqué).
-
-### 🤝 Contribuer
-
-**Ajouter une nouvelle langue :**
-1.  Copiez `fr.json` vers `xx.json` (code langue).
-2.  Traduisez les valeurs.
-3.  Ajoutez le code `'xx'` dans le tableau `availableLanguages` de `script.js`.
-4.  Ajoutez le bouton dans le menu HTML.
-
-**Ajouter une fête :**
-Éditez le tableau des fêtes dans `script.js`. Assurez-vous de définir le `type` (major, fixed, mobile) pour que la couleur de légende s'applique correctement.
+Cette fonction est utilisée partout pour récupérer les chaînes à afficher (`t('subtitle')`, `t('donateTitle')`, etc.).
 
 ---
-*© 2025 GigaFaith - Code sous licence MIT.*
+
+#### Calculs calendrier & années bissextiles
+
+Plusieurs fonctions (non montrées intégralement) gèrent :
+
+- la détection des années bissextiles selon le calendrier Julien/Grégorien,
+- la génération de texte type :
+  - `descJulianBC`, `descJulianAD`, `descTransition`, `descGregorianFirst`, `descGregorian`…
+- la logique de **réforme grégorienne (1582)** :
+  - détection des jours « sautés » via `isDaySkipped(year, month, day)`,
+  - affichage de ces jours avec une classe spéciale `skipped-day` et un `title` traduit (`t('skippedDay')`).
+
+Exemple simplifié dans le rendu du calendrier :
+
+```js
+if (isDaySkipped(year, month, day)) {
+    const skippedDay = document.createElement('div');
+    skippedDay.className = 'calendar-day ... skipped-day';
+    skippedDay.innerHTML = `<span class="line-through opacity-30">${day}</span>`;
+    skippedDay.title = t('skippedDay');
+    grid.appendChild(skippedDay);
+    continue;
+}
+```
+
+---
+
+#### Saints du jour
+
+Table de base :
+
+```js
+const saintsOfTheYear = {
+    "1-1": "Sainte Marie, Mère de Dieu",
+    "1-2": "Saint Basile le Grand & Saint Grégoire de Nazianze",
+    ...
+    "2-2": "Présentation du Seigneur (Chandeleur)",
+    ...
+};
+```
+
+Fonction utilitaire (non montrée entièrement ici) : `getSaintOfDay(month, day)` qui retourne le saint à partir de cette table.
+
+Cette information est utilisée lors du rendu des cellules du calendrier et dans les listes.
+
+---
+
+#### Rendu du calendrier
+
+La fonction `renderCalendar()` :
+
+- parcourt les jours du mois,
+- crée pour chacun un élément `.calendar-day`,
+- vérifie :
+  - si c’est aujourd’hui (`isToday`),
+  - s’il y a des fêtes dans `currentHolidays`,
+  - quel est le saint du jour via `getSaintOfDay`.
+
+Elle applique des classes supplémentaires selon le type de fête :
+
+```js
+if (dayHolidays.length > 0) {
+    const holiday = dayHolidays[0];
+    if (holiday.type === 'major') {
+        classes += ' holiday-major';
+    } else if (holiday.type === 'mobile') {
+        classes += ' holiday-mobile';
+    } else {
+        ...
+    }
+}
+```
+
+---
+
+#### Gestion du thème (clair / sombre)
+
+```js
+function toggleTheme() {
+    const html = document.documentElement;
+    const themeIcon = document.getElementById('themeIcon');
+    
+    if (currentTheme === 'light') {
+        currentTheme = 'dark';
+        html.setAttribute('data-theme', 'dark');
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+    } else {
+        currentTheme = 'light';
+        html.setAttribute('data-theme', 'light');
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
+    }
+    
+    localStorage.setItem('gigafaith-theme', currentTheme);
+}
+
+function loadTheme() {
+    const savedTheme = localStorage.getItem('gigafaith-theme') || 'light';
+    currentTheme = savedTheme;
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    
+    const themeIcon = document.getElementById('themeIcon');
+    if (savedTheme === 'dark') {
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+    }
+}
+```
+
+---
+
+#### Notification toast
+
+```js
+function showNotification(message) {
+    const notification = document.createElement('div');
+    notification.className = 'notification-toast';
+    notification.innerHTML = `
+        <i class="fas fa-info-circle mr-2"></i>
+        ${message}
+    `;
+    document.body.appendChild(notification);
+    
+    setTimeout(() => notification.classList.add('show'), 10);
+    
+    setTimeout(() => {
+        notification.classList.remove('show');
+        setTimeout(() => notification.remove(), 300);
+    }, 3000);
+}
+```
+
+---
+
+#### Easter eggs
+
+```js
+function checkEasterEgg(year, month, day) {
+    if (month === 11 && day === 25) {
+        triggerEasterEgg('christmas');
+        return true;
+    }
+    if (year === 1972 && month === 2 && day === 14) {
+        triggerEasterEgg('croissant', 'Anniversaire Julien BLANC');
+        return true;
+    }
+    if (year === 1998 && month === 7 && day === 11) {
+        triggerEasterEgg('fireworks', 'Anniversaire Antoine BIANCONI');
+        return true;
+    }
+    if (year === 2006 && month === 6 && day === 10) {
+        triggerEasterEgg('balloons', 'Anniversaire Doryan GOHIER');
+        return true;
+    }
+    if (year === 1999 && month === 11 && day === 17) {
+        triggerEasterEgg('dumbbells', 'Anniversaire Alexandre GUILLIER');
+        return true;
+    }
+    return false;
+}
+```
+
+`triggerEasterEgg` crée des particules/animations temporaires puis les supprime après quelques secondes.
+
+---
+
+#### Mentions légales & modal de don
+
+- `showLegalNotice()` / `closeLegalModal()`  
+  Génèrent une modal avec des sections **titre + texte** entièrement basées sur les traductions (`t('legalSection1Title')`, etc.).
+
+- `showDonateModal()` / `closeDonateModal()`  
+  Ouvrent / ferment une modal déjà présente dans le HTML :
+
+```js
+function showDonateModal() {
+    const modal = document.getElementById('donateModal');
+    if (!modal) return;
+    const title = document.getElementById('donateModalTitle');
+    const body = document.getElementById('donateModalBody');
+    const link = document.getElementById('donateModalLink');
+    
+    title.textContent = t('donateTitle');
+    body.textContent = t('donateDescription');
+    link.textContent = t('donateLinkText');
+    link.href = translations[currentLang].donateLinkUrl || translations['fr'].donateLinkUrl;
+    
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    modal.querySelector('.modal-content').classList.add('modal-enter');
+}
+```
+
+Les fonctions nécessaires aux attributs `onclick` du HTML sont exposées sur `window` :
+
+```js
+window.showHolidayFromList = showHolidayFromList;
+window.showSaintFromList = showSaintFromList;
+window.showDonateModal = showDonateModal;
+window.closeDonateModal = closeDonateModal;
+```
+
+---
+
+## 🔧 Installation & utilisation
+
+1. Cloner le dépôt :
+   ```bash
+   git clone https://github.com/ton-compte/gigafaith-calendrier.git
+   cd gigafaith-calendrier
+   ```
+
+2. Ouvrir `index.html` directement dans un navigateur  
+   ou utiliser un petit serveur local (recommandé pour le chargement des fichiers JSON de traduction) :
+   ```bash
+   npx serve .
+   ```
+   puis ouvrir l’URL fournie (souvent `http://localhost:3000`).
+
+---
+
+## 🧩 Personnalisation
+
+### Ajouter / modifier une langue
+
+1. Créer un fichier `xx.json` (ex : `pt.json`) à la racine.
+2. Y copier la structure de `fr.json` et traduire les chaînes.
+3. Ajouter la langue dans `availableLanguages` :
+   ```js
+   const availableLanguages = ['fr', 'en', 'es', 'it', 'de', 'ko', 'pt'];
+   ```
+4. Ajouter le bouton correspondant dans le sélecteur de langue HTML (si nécessaire).
+
+### Modifier les saints du jour
+
+Éditer l’objet `saintsOfTheYear` dans `script.js` et ajuster ou ajouter des entrées :
+
+```js
+"3-19": "Saint Joseph, époux de la Vierge Marie",
+```
+
+### Ajouter / modifier une fête
+
+Les fêtes sont stockées dans une structure (non intégralement visible dans l’extrait) et utilisées pour remplir `currentHolidays`.  
+Pour ajouter une fête :
+
+- Rajouter une entrée dans la liste des fêtes (fixe ou calculée),
+- Vérifier que `renderCalendar()` utilise bien son `type` (`major`, `mobile`, etc.) pour l’affichage.
+
+### Configurer le lien de don
+
+Dans les fichiers JSON de traduction (`fr.json`, etc.) :
+
+```json
+{
+  "donateLinkUrl": "https://ton-lien-de-don.com",
+  "donateTitle": "Soutenir GigaFaith",
+  "donateDescription": "Votre don nous aide à ...",
+  "donateLinkText": "Faire un don en ligne"
+}
+```
+
+---
+
+## 🤝 Contribution
+
+1. Fork du dépôt
+2. Créer une branche :
+   ```bash
+   git checkout -b feature/ma-fonctionnalite
+   ```
+3. Commits clairs avec message descriptif
+4. Pull request vers la branche principale du projet
+
+Merci de :
+
+- Respecter le style du code existant (naming, organisation),
+- Conserver la compatibilité avec les fichiers de traductions,
+- Tester au moins sur la dernière version de Chrome/Firefox.
+
+---
+
+## 📄 Licence
+
+```text
+MIT License
+Copyright (c) 2025 - GIGAFAITH
 ```
